@@ -50,6 +50,7 @@ class temp(object):
     SHORT = {}
     KEYWORD = {}
     GETALL = {}
+    IMDB_CAP = {}
 
 async def is_subscribed(bot, query=None, userid=None):
     try:
