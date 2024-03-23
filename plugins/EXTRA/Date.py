@@ -28,6 +28,30 @@ time_str = """
 """
 
 
+time_request = """
+**TIME** :- `{}`
+
+**DATE** :- `{}`
+
+**DAY** :- `{}`
+
+"""
+
+
+
+
+class TimeRequest:
+    def india():
+        present = datetime.now(tz=pytz.timezone("Asia/Kolkata"))
+        time = present.strftime("%I:%M:%S %p")
+        date = present.strftime("%d-%B-%Y")
+        day = present.strftime("%A")
+        utc = present.strftime("%z")
+        unixtime = int(datetime.utcnow().timestamp())
+        indian_time = time_request.format(time, date, day)
+        return indian_time
+
+
 class TimeTeller:
     def india():
         present = datetime.now(tz=pytz.timezone("Asia/Kolkata"))
