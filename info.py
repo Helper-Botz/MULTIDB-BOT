@@ -1,4 +1,5 @@
 import re
+from os import getenv
 from os import environ
 from Script import script 
 
@@ -17,18 +18,29 @@ API_ID = int(environ['API_ID'])
 API_HASH = environ['API_HASH']
 BOT_TOKEN = environ['BOT_TOKEN']
 
+
+
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = is_enabled((environ.get('USE_CAPTION_FILTER', 'True')), True)
 
-PICS = (environ.get('PICS', 'https://telegra.ph/file/6a0726f79acd8300e9a04.jpg https://telegra.ph/file/68289fefb76dbc43b766d.jpg https://telegra.ph/file/0caad29c0cf91c23fb1b6.jpg https://telegra.ph/file/8c34c755dd16581c1c6b5.jpg https://telegra.ph/file/365e35b554e5a3ea83857.jpg https://telegra.ph/file/07f185825c5b7bfd6fbfb.jpg https://telegra.ph/file/85f95494565a762edb3e7.jpg https://telegra.ph/file/708a1d6ce805fcc6a46d0.jpg https://telegra.ph/file/d799c1a964f211028cc97.jpg https://telegra.ph/file/b987425b80bca0cf45c7e.jpg https://telegra.ph/file/2a8b3779760289b76de24.jpg https://telegra.ph/file/47961be968719b3e24cf0.jpg https://telegra.ph/file/2e127b0f6b1810d733c09.jpg https://telegra.ph/file/281b18770a43a29120252.jpg https://telegra.ph/file/2086dd2aa8382e758a599.jpg https://telegra.ph/file/fcc849db4bf5c517f0f8d.jpg')).split()
-NOR_IMG = environ.get("NOR_IMG", "https://telegra.ph/file/46443096bc6895c74a716.jpg")
-MELCOW_VID = environ.get("MELCOW_VID", "https://telegra.ph/file/451f038b4e7c2ddd10dc0.mp4")
-SPELL_IMG = environ.get("SPELL_IMG", "https://telegra.ph/file/5e2d4418525832bc9a1b9.jpg")
+PICS = (environ.get('PICS', 'https://te.legra.ph/file/cce1c345a4a752453a3a3.jpg')).split() #SAMPLE PIC
+NOR_IMG = environ.get("NOR_IMG", "https://te.legra.ph/file/a27dc8fe434e6b846b0f8.jpg")
+MELCOW_VID = environ.get("MELCOW_VID", "https://graph.org/file/6602b32023899c4022323.mp4")
+SPELL_IMG = environ.get("SPELL_IMG", "https://te.legra.ph/file/15c1ad448dfe472a5cbb8.jpg")
+SP = (environ.get('SP', 'https://telegra.ph/file/db018384d5d139f3844ed.jpg https://telegra.ph/file/30c736c93b5ad5c328141.jpg https://telegra.ph/file/f1565e213ec1a45a27362.jpg https://telegra.ph/file/0c53da8c1598c63e50a6e.jpg https://telegra.ph/file/360d78cf3209429ca8e66.jpg')).split()
+
 
 # Admins, Channels & Users
+ADMIN = int(environ.get('ADMINS'))
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '0').split()]
+PREMIUM_USER = [int(user) if id_pattern.search(user) else user for user in environ.get('PREMIUM_USER', '').split()]
+CHAT = [int(chat) if id_pattern.search(chat) else chat for chat in environ.get('CHAT', '-1001371670080' '-1001600925543').split()]
+
+
+
+
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 auth_channel = environ.get('AUTH_CHANNEL')
@@ -42,12 +54,13 @@ SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(
 NO_RESULTS_MSG = is_enabled((environ.get("NO_RESULTS_MSG", 'False')), False)
 
 # MongoDB information
-SECONDDB_URI = environ.get('SECONDDB_URI', None)
 DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
+DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Others
+GROUP_LOGS = int(environ.get('GROUP_LOGS', 0)) # Request Verification => S - 3
+VERIFY = bool(environ.get('VERIFY',False))
 IS_VERIFY = is_enabled((environ.get('IS_VERIFY', 'False')), False)
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', "https://t.me/c/1845700490/3")
 VERIFY2_URL = environ.get('VERIFY2_URL', "mdisklink.link")
@@ -59,17 +72,15 @@ DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in enviro
 MAX_B_TN = environ.get("MAX_B_TN", "5")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
 PORT = environ.get("PORT", "8080")
-GRP_LNK = environ.get('GRP_LNK', 'https://t.me/+GOFte-Rz2tcxODg1')
-CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/+mCMdCb_ymAowZmNl')
 MSG_ALRT = environ.get('MSG_ALRT', 'Wʜᴀᴛ Aʀᴇ Yᴏᴜ Lᴏᴏᴋɪɴɢ Aᴛ ?')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', 0))
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'DQ_The_File_Donor_Support')
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'NASRANI_SUPPORT')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
 AUTO_FFILTER = is_enabled((environ.get('AUTO_FFILTER', "True")), True)
 AUTO_DELETE = is_enabled((environ.get('AUTO_DELETE', "True")), True)
 SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "True")), True)
-CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", f"{script.CAPTION}")
+CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", f"{script.CUSTOM_FILE_CAPTION}")
 BATCH_FILE_CAPTION = environ.get("BATCH_FILE_CAPTION", CUSTOM_FILE_CAPTION)
 IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", f"{script.IMDB_TEMPLATE_TXT}")
 LONG_IMDB_DESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "False"), False)
@@ -80,6 +91,65 @@ FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '')).
 MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "True")), True)
 PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
+
+TUTORIAL = environ.get('TUTORIAL', 'https://t.me/+r_y-yTPhXkQwMzdl')
+IS_TUTORIAL = bool(environ.get('IS_TUTORIAL', True))
+
+ 
+CUSTOM_QUERY_CAPTION = environ.get("CUSTOM_QUERY_CAPTION", f"{script.CUSTOM_QUERY_CAPTION}")
+# VERIFY = bool(environ.get('VERIFY', False))
+# UPLOAD_CHANNEL = environ.get('UPLOAD_CHANNEL',"https://t.me/batchfiles_store")
+#redict
+MAIN_CHANNEL = environ.get('MAIN_CHANNEL',"https://t.me/nasrani_update")
+FILE_FORWARD = environ.get('FILE_FORWARD',"https://t.me/+7oxSIxY4X0c2ZGVl")
+MSG_ALRT = environ.get('MSG_ALRT', '𝑪𝑯𝑬𝑪𝑲 & 𝑻𝑹𝒀 𝑨𝑳𝑳 𝑴𝒀 𝑭𝑬𝑨𝑻𝑼𝑹𝑬𝑺')
+FILE_CHANNEL = int(environ.get('FILE_CHANNEL', "-1001708959708"))
+
+BR_IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", f"{script.BR_TEMPLATE_TXT}")
+BATCH_LINK = environ.get('BATCH_LINK',"https://t.me/nasrani_update")
+PRINT = environ.get('PRINT',"https://t.me/+IpB01WFvsNplZDI9")
+ACCOUNT = environ.get('ACCOUNT', "")
+
+#mute_login
+
+login_channel = environ.get('LOGIN_CHANNEL' "-1001351202807")
+LOGIN_CHANNEL = int(login_channel) if login_channel and id_pattern.search(login_channel) else None
+pm = environ.get('PM')
+PM = int(pm) if pm and id_pattern.search(pm) else None
+soon_channel = environ.get('SOON_CHANNEL')
+SOON_CHANNEL = int(soon_channel) if soon_channel and id_pattern.search(soon_channel) else None
+
+LANGUAGES = ["malayalam", "mal", "tamil", "tam" ,"english", "eng", "hindi", "hin", "telugu", "tel", "kannada", "kan"]
+
+SEASONS = ["season 1" , "season 2" , "season 3" , "season 4", "season 5" , "season 6" , "season 7" , "season 8" , "season 9" , "season 10"]
+# RMBG = environ.get("RMBG", "MJMoiiatXPHcHgFG3D1Wf2aG")
+
+RMBG = environ.get("RMBG", "")
+
+
+# heroku
+HRK_APP_NAME = environ.get('HRK_APP_NAME', 'mybots')
+HRK_API = environ.get('HRK_API', '0')
+OWNER_USERNAME = getenv("OWNER_USERNAME","Rax_xt")
+
+#### KANG STCKER ####
+# Get Your bot username
+BOT_USERNAME = getenv("BOT_USERNAME" , "JAAMBOO_BOT")
+# Don't Add style font 
+BOT_NAME = getenv("BOT_NAME" , "JAAMBOOBOT")
+
+
+
+LOW_SIZE = environ.get('LOW_SIZE',"NASRANI_SUPPORT")
+GRP_LNK = environ.get('GRP_LNK', 'https://t.me/nasrani_update')
+CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/batchfiles_store')
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'NASRANI_SUPPORT')
+SUPPORT_CHAT_LINK = environ.get('SUPPORT_CHAT_LINK', 't.me/NASRANI_SUPPORT')
+UPDATE_CHANNEL_ID = int(environ.get('UPDATE_CHANNEL_ID', 0))
+PRINT_ID = int(environ.get('PRINT_ID', 0))
+MOVIE_RULES = environ.get('MOVIE_RULES', 't.me/NASRANI_SUPPORT')
+SUPPORT_CHAT_RULES = environ.get('SUPPORT_CHAT_RULES', 't.me/NASRANI_SUPPORT')
+
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")
