@@ -9,7 +9,7 @@ import re
 from datetime import datetime
 from pyrogram import filters, Client, enums
 import git, shutil
-from database.utils import temp
+from utils import temp
 
 # ---------------------------------------------------------------------
 # ----------------------------------------------------------------------
