@@ -175,6 +175,7 @@ from plugins.helpers.config import Telegram
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
 
+FRESH = {}
 BUTTONS = {}
 SPELL_CHECK = {}
 GENERAT = "-1001203428484"
