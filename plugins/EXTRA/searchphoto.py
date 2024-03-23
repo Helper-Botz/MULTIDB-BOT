@@ -9,7 +9,7 @@ import requests
 from dotenv import load_dotenv
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from database.utils import temp
+from utils import temp
 
 
 
