@@ -8,7 +8,7 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message, CallbackQuery
 from telegraph import upload_file
-from database.utils import get_file_id
+from utils import get_file_id
 
 
 @Client.on_message(filters.command("telegraph") & filters.private)
