@@ -131,6 +131,17 @@ ACCOUNT = environ.get('ACCOUNT', "")
 
 
 
+LOW_SIZE = environ.get('LOW_SIZE',"NASRANI_SUPPORT")
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'NASRANI_SUPPORT')
+SUPPORT_CHAT_LINK = environ.get('SUPPORT_CHAT_LINK', 't.me/NASRANI_SUPPORT')
+UPDATE_CHANNEL_ID = int(environ.get('UPDATE_CHANNEL_ID', 0))
+PRINT_ID = int(environ.get('PRINT_ID', 0))
+MOVIE_RULES = environ.get('MOVIE_RULES', 't.me/NASRANI_SUPPORT')
+SUPPORT_CHAT_RULES = environ.get('SUPPORT_CHAT_RULES', 't.me/NASRANI_SUPPORT')
+
+
+
+
 # LANGUAGES1 = ["malayalam", "mal", "tamil", "tam" ,"english", "eng", "hindi", "hin", "telugu", "tel", "kannada", "kan"]
 LANGUAGES = ["malayalam", "mal", "tamil", "tam" ,"english", "eng", "hindi", "hin", "telugu", "tel", "kannada", "kan", "s01" , "s02" , "s03" , "s04", "s05" , "s06" , "s07" , "s08" , "s09" , "s10", "144p", "240p", "360p", "480p", "720p", "1080p", "2060p"]
 
