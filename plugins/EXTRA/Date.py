@@ -9,8 +9,7 @@ from pytz import timezone
 from pyrogram import Client, filters
 from datetime import datetime
 import pytz
-from info import ADMINS, SUPPORT_CHAT_ID, SUPPORT_CHAT_RULES, MOVIE_RULES, UPDATE_CHANNEL_ID, PRINT_ID, GRP_LNK, LOW_SIZE, SUPPORT_CHAT
-
+from info import *
 from datetime import datetime
 import pytz
 
