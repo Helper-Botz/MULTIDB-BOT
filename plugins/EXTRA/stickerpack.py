@@ -2,7 +2,7 @@ import base64
 import httpx
 import os
 from pyrogram import filters, Client, enums
-from database.utils import temp
+from utils import temp
 
 from pyrogram import filters
 import pyrogram
