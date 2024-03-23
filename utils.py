@@ -47,6 +47,7 @@ class temp(object):
     SETTINGS = {}
     VERIFY = {}
     SEND_ALL_TEMP = {}
+    SHORT = {}
     KEYWORD = {}
     GETALL = {}
 
