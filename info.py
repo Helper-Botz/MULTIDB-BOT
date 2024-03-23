@@ -2,6 +2,8 @@ import re
 from os import getenv
 from os import environ
 from Script import script 
+import os
+
 
 id_pattern = re.compile(r'^.\d+$')
 def is_enabled(value, default):
@@ -18,6 +20,15 @@ API_ID = int(environ['API_ID'])
 API_HASH = environ['API_HASH']
 BOT_TOKEN = environ['BOT_TOKEN']
 
+#LazyRenamer Configs
+FLOOD = int(environ.get("FLOOD", "10"))
+LAZY_MODE = bool(environ.get("LAZY_MODE", True))
+#Add user id of the user in this field those who you want to be Authentic user for file renaming features
+lazy_renamers = [int(lazrenamers) if id_pattern.search(lazrenamers) else lazrenamers for lazrenamers in environ.get('LAZY_RENAMERS', '').split()]
+LAZY_RENAMERS = (lazy_renamers + ADMINS) if lazy_renamers else []
+REQ_CHANNEL = int(environ.get('LOG_CHANNEL'))
+DOWNLOAD_LOCATION = "./DOWNLOADS"
+
 
 
 # Bot settings
@@ -28,7 +39,7 @@ PICS = (environ.get('PICS', 'https://te.legra.ph/file/cce1c345a4a752453a3a3.jpg'
 NOR_IMG = environ.get("NOR_IMG", "https://te.legra.ph/file/a27dc8fe434e6b846b0f8.jpg")
 MELCOW_VID = environ.get("MELCOW_VID", "https://graph.org/file/6602b32023899c4022323.mp4")
 SPELL_IMG = environ.get("SPELL_IMG", "https://te.legra.ph/file/15c1ad448dfe472a5cbb8.jpg")
-SP = (environ.get('SP', 'https://telegra.ph/file/db018384d5d139f3844ed.jpg https://telegra.ph/file/30c736c93b5ad5c328141.jpg https://telegra.ph/file/f1565e213ec1a45a27362.jpg https://telegra.ph/file/0c53da8c1598c63e50a6e.jpg https://telegra.ph/file/360d78cf3209429ca8e66.jpg')).split()
+SP = (environ.get('SP', 'https://telegra.ph/file/db018384d5d139f3844ed.jpg https://graph.org/file/08716f4c123a758bb570d.jpg https://telegra.ph/file/30c736c93b5ad5c328141.jpg https://graph.org/file/a40b6e72a7ca053948aaa.jpg https://telegra.ph/file/f1565e213ec1a45a27362.jpg https://telegra.ph/file/0c53da8c1598c63e50a6e.jpg https://graph.org/file/931063abebba643e9ce28.jpg https://telegra.ph/file/360d78cf3209429ca8e66.jpg https://graph.org/file/769a3f165ea93706a79cb.jpg https://graph.org/file/78a4dba77c23020729527.jpg')).split()
 
 
 # Admins, Channels & Users
@@ -36,11 +47,15 @@ ADMIN = int(environ.get('ADMINS'))
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '0').split()]
 PREMIUM_USER = [int(user) if id_pattern.search(user) else user for user in environ.get('PREMIUM_USER', '').split()]
-CHAT = [int(chat) if id_pattern.search(chat) else chat for chat in environ.get('CHAT', '-1001371670080' '-1001600925543').split()]
+SUPPORT_CHAT_ID = [int(chat) if id_pattern.search(chat) else chat for chat in environ.get('SUPPORT_CHAT_ID', '').split()]
+LOW_SIZE = environ.get('LOW_SIZE', "")
+GRP_LNK = environ.get('GRP_LNK', '')
+CHNL_LNK = environ.get('CHNL_LNK', '')
+UPDATE_LNK = environ.get('UPDATE_LNK', '')
 
 
 
-
+F_SUB = os.environ.get("FORCE_SUB", "NasraniChatGroup") 
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 auth_channel = environ.get('AUTH_CHANNEL')
@@ -50,12 +65,16 @@ AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 support_chat_id = environ.get('SUPPORT_CHAT_ID')
 reqst_channel = environ.get('REQST_CHANNEL_ID')
 REQST_CHANNEL = int(reqst_channel) if reqst_channel and id_pattern.search(reqst_channel) else None
-SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(support_chat_id) else None
+# SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(support_chat_id) else None
 NO_RESULTS_MSG = is_enabled((environ.get("NO_RESULTS_MSG", 'False')), False)
 
 # MongoDB information
+SECONDDB_URI = environ.get('SECONDDB_URI', None)
 DATABASE_URI = environ.get('DATABASE_URI', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
+SECOND_URI = environ.get('DATABASE_URI', "mongodb+srv://Zebhamol:Zebhamol@cluster0.u1mob6u.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+SECOND_NAME = environ.get('DATABASE_NAME', "Cluster0")
+
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Others
@@ -110,21 +129,10 @@ BATCH_LINK = environ.get('BATCH_LINK',"https://t.me/nasrani_update")
 PRINT = environ.get('PRINT',"https://t.me/+IpB01WFvsNplZDI9")
 ACCOUNT = environ.get('ACCOUNT', "")
 
-#mute_login
 
-login_channel = environ.get('LOGIN_CHANNEL' "-1001351202807")
-LOGIN_CHANNEL = int(login_channel) if login_channel and id_pattern.search(login_channel) else None
-pm = environ.get('PM')
-PM = int(pm) if pm and id_pattern.search(pm) else None
-soon_channel = environ.get('SOON_CHANNEL')
-SOON_CHANNEL = int(soon_channel) if soon_channel and id_pattern.search(soon_channel) else None
 
-LANGUAGES = ["malayalam", "mal", "tamil", "tam" ,"english", "eng", "hindi", "hin", "telugu", "tel", "kannada", "kan"]
-
-SEASONS = ["season 1" , "season 2" , "season 3" , "season 4", "season 5" , "season 6" , "season 7" , "season 8" , "season 9" , "season 10"]
-# RMBG = environ.get("RMBG", "MJMoiiatXPHcHgFG3D1Wf2aG")
-
-RMBG = environ.get("RMBG", "")
+# LANGUAGES1 = ["malayalam", "mal", "tamil", "tam" ,"english", "eng", "hindi", "hin", "telugu", "tel", "kannada", "kan"]
+LANGUAGES = ["malayalam", "mal", "tamil", "tam" ,"english", "eng", "hindi", "hin", "telugu", "tel", "kannada", "kan", "s01" , "s02" , "s03" , "s04", "s05" , "s06" , "s07" , "s08" , "s09" , "s10", "144p", "240p", "360p", "480p", "720p", "1080p", "2060p"]
 
 
 # heroku
@@ -134,21 +142,10 @@ OWNER_USERNAME = getenv("OWNER_USERNAME","Rax_xt")
 
 #### KANG STCKER ####
 # Get Your bot username
-BOT_USERNAME = getenv("BOT_USERNAME" , "JAAMBOO_BOT")
+BOT_USERNAME = getenv("BOT_USERNAME" , "")
 # Don't Add style font 
 BOT_NAME = getenv("BOT_NAME" , "JAAMBOOBOT")
 
-
-
-LOW_SIZE = environ.get('LOW_SIZE',"NASRANI_SUPPORT")
-GRP_LNK = environ.get('GRP_LNK', 'https://t.me/nasrani_update')
-CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/batchfiles_store')
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'NASRANI_SUPPORT')
-SUPPORT_CHAT_LINK = environ.get('SUPPORT_CHAT_LINK', 't.me/NASRANI_SUPPORT')
-UPDATE_CHANNEL_ID = int(environ.get('UPDATE_CHANNEL_ID', 0))
-PRINT_ID = int(environ.get('PRINT_ID', 0))
-MOVIE_RULES = environ.get('MOVIE_RULES', 't.me/NASRANI_SUPPORT')
-SUPPORT_CHAT_RULES = environ.get('SUPPORT_CHAT_RULES', 't.me/NASRANI_SUPPORT')
 
 
 LOG_STR = "Current Cusomized Configurations are:-\n"

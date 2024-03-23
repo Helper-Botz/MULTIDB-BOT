@@ -22,6 +22,42 @@
             "description": "Your bot token.",
             "required": true
         },
+        "BOT_USERNAME": {
+            "description": "WITHOUT @ BOT_USERNAME",
+            "required": true
+        },
+        "HRK_APP_NAME": {
+            "description": "HRK_APP_NAME",
+            "required": true
+        },               
+        "HRK_API": {
+            "description": "HRK_API",
+            "required": true
+        },
+        "OPENAI_API": {
+            "description": "OPENAI_API",
+            "required": true
+        },
+        "RemoveBG_API": {
+            "description": "RemoveBG_API",
+            "required": true
+        },
+        "SUPPORT_CHAT_ID": {
+            "description": "SUPPORT_CHAT_ID",
+            "required": true
+        },
+        "GRP_LNK": {
+            "description": "GRP_LNK",
+            "required": true
+        },
+        "CHNL_LNK": {
+            "description": "CHNL_LNK",
+            "required": true
+        },
+        "UPDATE_LNK": {
+            "description": "UPDATE_LNK",
+            "required": true
+        },
         "API_ID": {
             "description": "Get this value from https://my.telegram.org",
             "required": true
@@ -30,6 +66,10 @@
             "description": "Get this value from https://my.telegram.org",
             "required": true
         },
+        "ACCOUNT": {
+            "description": "your heroku gmail account",
+            "required": true
+        },        
         "CHANNELS": {
             "description": "Username or ID of channel or group. Separate multiple IDs by space.",
             "required": false
