@@ -2226,7 +2226,7 @@ async def auto_filter(client, msg, spoll=False):
         search, files, offset, total_results = spoll
         settings = await get_settings(message.chat.id)
         key = f"{message.chat.id}-{message.id}"
-        BUTTONS[key] = search
+#        BUTTONS[key] = search
     temp.SEND_ALL_TEMP[message.from_user.id] = files
     temp.KEYWORD[message.from_user.id] = search
     if 'is_shortlink' in settings.keys():
