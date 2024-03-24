@@ -2275,6 +2275,8 @@ async def auto_filter(client, msg, spoll=False):
             InlineKeyboardButton(f"𝐒𝐞𝐚𝐬𝐨𝐧𝐬{random.choice(RUN_STRINGS)}",  callback_data=f"seasons#{message.from_user.id}")
         ])
     if offset != "":
+        key = f"{message.chat.id}-{message.id}"
+        BUTTONS[key] = search
         req = message.from_user.id if message.from_user else 0
         try:
             if settings['max_btn']:
