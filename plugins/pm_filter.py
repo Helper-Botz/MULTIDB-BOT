@@ -2228,7 +2228,6 @@ async def auto_filter(client, msg, spoll=False):
         key = f"{message.chat.id}-{message.id}"
     FRESH[key] = search
     temp.GETALL[key] = files
-    BUTTONS[key] = search
     temp.SEND_ALL_TEMP[message.from_user.id] = files
     temp.KEYWORD[message.from_user.id] = search
     if 'is_shortlink' in settings.keys():
@@ -2255,11 +2254,11 @@ async def auto_filter(client, msg, spoll=False):
         )
         btn.insert(0, [
             InlineKeyboardButton(f"{random.choice(RUN_STRINGS)}𝐒𝐞𝐧𝐝 𝐀𝐥𝐥", callback_data=f"send_fall#{pre}#{0}#{message.from_user.id}"),
-            InlineKeyboardButton(f"𝐐𝐮𝐚𝐥𝐢𝐭𝐲{random.choice(RUN_STRINGS)}", callback_data=f"quality#{key}")
+            InlineKeyboardButton(f"𝐐𝐮𝐚𝐥𝐢𝐭𝐲{random.choice(RUN_STRINGS)}", callback_data=f"quality")
         ])
         btn.insert(0, [
-            InlineKeyboardButton(f"{random.choice(RUN_STRINGS)}𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞𝐬", callback_data=f"languages#{key}"),
-            InlineKeyboardButton(f"𝐒𝐞𝐚𝐬𝐨𝐧𝐬{random.choice(RUN_STRINGS)}",  callback_data=f"seasons#{key}")
+            InlineKeyboardButton(f"{random.choice(RUN_STRINGS)}𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞𝐬", callback_data=f"languages#{message.from_user.id}"),
+            InlineKeyboardButton(f"𝐒𝐞𝐚𝐬𝐨𝐧𝐬{random.choice(RUN_STRINGS)}",  callback_data=f"seasons#{message.from_user.id}")
         ])
     else:
         btn = []
@@ -2271,11 +2270,11 @@ async def auto_filter(client, msg, spoll=False):
         )
         btn.insert(0, [
             InlineKeyboardButton(f"{random.choice(RUN_STRINGS)}𝐒𝐞𝐧𝐝 𝐀𝐥𝐥", callback_data=f"send_fall#{pre}#{0}#{message.from_user.id}"),
-            InlineKeyboardButton(f"𝐐𝐮𝐚𝐥𝐢𝐭𝐲{random.choice(RUN_STRINGS)}", callback_data=f"quality#{key}")
+            InlineKeyboardButton(f"𝐐𝐮𝐚𝐥𝐢𝐭𝐲{random.choice(RUN_STRINGS)}", callback_data=f"quality")
         ])
         btn.insert(0, [
-            InlineKeyboardButton(f"{random.choice(RUN_STRINGS)}𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞𝐬", callback_data=f"languages#{key}"),
-            InlineKeyboardButton(f"𝐒𝐞𝐚𝐬𝐨𝐧𝐬{random.choice(RUN_STRINGS)}",  callback_data=f"seasons#{key}")
+            InlineKeyboardButton(f"{random.choice(RUN_STRINGS)}𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞𝐬", callback_data=f"languages#{message.from_user.id}"),
+            InlineKeyboardButton(f"𝐒𝐞𝐚𝐬𝐨𝐧𝐬{random.choice(RUN_STRINGS)}",  callback_data=f"seasons#{message.from_user.id}")
         ])
     if offset != "":
         req = message.from_user.id if message.from_user else 0
