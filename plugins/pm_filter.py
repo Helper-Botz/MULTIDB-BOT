@@ -2248,7 +2248,7 @@ async def auto_filter(client, msg, spoll=False):
             ]
         )
         btn.insert(0, [
-            InlineKeyboardButton(f"{random.choice(RUN_STRINGS)}𝐒𝐞𝐧𝐝 𝐀𝐥𝐥", callback_data=f"sendfiles#{key}"),
+            InlineKeyboardButton(f"{random.choice(RUN_STRINGS)}𝐒𝐞𝐧𝐝 𝐀𝐥𝐥", callback_data=f"send_fall#{pre}#{0}#{message.from_user.id}"),
             InlineKeyboardButton(f"𝐐𝐮𝐚𝐥𝐢𝐭𝐲{random.choice(RUN_STRINGS)}", callback_data=f"quality#{key}")
         ])
         btn.insert(0, [
@@ -2264,7 +2264,7 @@ async def auto_filter(client, msg, spoll=False):
             ]
         )
         btn.insert(0, [
-            InlineKeyboardButton(f"{random.choice(RUN_STRINGS)}𝐒𝐞𝐧𝐝 𝐀𝐥𝐥", callback_data=f"sendfiles#{key}"),
+            InlineKeyboardButton(f"{random.choice(RUN_STRINGS)}𝐒𝐞𝐧𝐝 𝐀𝐥𝐥", callback_data=f"send_fall#{pre}#{0}#{message.from_user.id}"),
             InlineKeyboardButton(f"𝐐𝐮𝐚𝐥𝐢𝐭𝐲{random.choice(RUN_STRINGS)}", callback_data=f"quality#{key}")
         ])
         btn.insert(0, [
